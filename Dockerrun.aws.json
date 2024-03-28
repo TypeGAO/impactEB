@@ -1,0 +1,33 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "nginx",
+            "image": "ardiank/impactnginx",
+            "hostname": "nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": ["frontend", "backend"],
+            "memory": 1000
+        },
+        {
+            "name": "frontend",
+            "image": "ardiank/impactfrontend",
+            "hostname": "frontend",
+            "essential": false,
+            "memory": 1000
+        },
+        {
+            "name": "backend",
+            "image": "ardiank/impactbackend",
+            "hostname": "backend",
+            "essential": false,
+            "memory": 1000
+        }
+    ]
+}
